@@ -1,11 +1,12 @@
 
 
-
-    <h3>
-        <?php /** @var Category $category */
-            echo $category->getName();
-        ?>
-    </h3>
-
-
-
+<h1>Категории</h1>
+<ul>
+<?php
+    /** @var Category $category */
+    foreach ($categories as $category){ ?>
+        <li>
+            <a href="<?php echo $category->getSlug();?>"><?php echo $category->getName();?></a>
+        </li>
+    <?php }?>
+</ul>

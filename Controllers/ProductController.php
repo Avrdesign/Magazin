@@ -21,7 +21,9 @@ class ProductController implements IController
 
     public function response()
     {
-        echo 'ProductController';
+        echo "ProductController $this->categorySlug , $this->productSlug";
     }
+
+
 
 }

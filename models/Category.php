@@ -13,11 +13,15 @@ class Category
     private $name;
     private $slug;
 
-    public function __construct($id,$name)
+    public function __construct($id,$name,$slug = null)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->slug = Utils::rusToLat($name);
+        if ($slug){
+            $this->slug = $slug;
+        }else{
+            $this->slug = Utils::rusToLat($name);
+        }
     }
 
     /**

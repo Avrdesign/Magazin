@@ -18,13 +18,10 @@ class CategoriesController implements IController
 
     public function response()
     {
-        $relationCat =  new CategoriesRelation();
-        /** @var Category $category */
-        $category = $relationCat->getCategoryById($this->slug);
-        include 'Views/header.php';
-        if ($category){
-            include 'Views/categories.php';
-        }
-        include 'Views/footer.php';
+        $relation = new CategoriesRelation();
+        $categories = $relation->getAllCategories();
+        include_once 'Views/header.php';
+        include_once 'Views/categories.php';
+        include_once 'Views/footer.php';
     }
 }
