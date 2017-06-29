@@ -11,7 +11,7 @@ class DBManager
     const DB_HOST = 'localhost';
     const DB_NAME = 'test';
     const DB_USER_NAME = 'root';
-    const DB_USER_PASSWORD = '';
+    const DB_USER_PASSWORD = 'root';
 
     private static $db = null;  // Единственный экземпляр класса, чтобы не создавать множество подключений
     private $connection;              // Идентификатор соединения
@@ -25,13 +25,14 @@ class DBManager
 
     public function __destruct()
     {
-        if ($this->connection){
+        if ($this->connection) {
             $this->connection->close();
         }
     }
 
     /* Получение экземпляра класса. Если он уже существует, то возвращается, если его не было, то создаётся и возвращается (паттерн Singleton) */
-    public static function getDB() {
+    public static function getDB()
+    {
             if (self::$db == null) {
                 self::$db = new DBManager();
             }
@@ -46,5 +47,12 @@ class DBManager
             $array[] = $row;
         }
         return $array;
+    }
+
+    public function getFieldById($tableName,$id){
+        $id = (int)$id;
+        $sql = "SELECT * FROM $tableName WHERE id = $id LIMIT 1";
+        $result = $this->connection->query($sql);
+        return $result->fetch_assoc();
     }
 }
