@@ -55,12 +55,11 @@ class Rout
 
     public function resp()
     {
-        $this->controller->response();
+        if ($this->controller){
+            $this->controller->response();
+        }else{
+            echo "Error server";
+        }    
     }
-
-
-
-
-
 
 }
