@@ -11,22 +11,21 @@ class Product
     protected $id;
     protected $name;
     protected $description;
-    protected $icon;
+    protected $icons;
     protected $price;
     protected $exists;
     protected $slug;
 
 
-    public function __construct($id,$name,$description,$icon,$price,$exists, $slug)
+    public function __construct($id,$name,$description,$icons,$price,$exists, $slug)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->icon = $icon;
+        $this->icons = $icons;
         $this->price = $price;
         $this->exists= $exists;
         $this->slug = $slug;
-
     }
 
     /**
@@ -46,11 +45,11 @@ class Product
     }
 
     /**
-     * @param mixed $icon
+     * @param mixed $icons
      */
-    public function setIcon($icon)
+    public function setIcons($icons)
     {
-        $this->icon = $icon;
+        $this->icons = $icons;
     }
 
     /**
@@ -88,9 +87,9 @@ class Product
     /**
      * @return mixed
      */
-    public function getIcon()
+    public function getIcons()
     {
-        return Rout::base_url().'src/images/'.$this->icon;
+        return Rout::base_url().'src/images/'.$this->icons;
     }
 
     public function getURI(){

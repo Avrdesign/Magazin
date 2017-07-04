@@ -20,7 +20,7 @@ class Rout
     public function __construct()
     {
         $params = explode('/',$_SERVER["REQUEST_URI"]);
-        if (!empty($params[3])){
+        if (!empty($params[4])){
             $this->controller = new Error404Controller();
             return;
         }
@@ -40,7 +40,8 @@ class Rout
                     $this->controller = new Error404Controller();
                     break;
                 }
-                $this->controller = new CategoriesController($params[2]);
+                $page = isset($params[3]) ? (int)$params[3] : null;
+                $this->controller = new CategoriesController($params[2],$page);
                 break;
             case self::PRODUCT :
                 if (!empty($params[2]) and !Utils::regExpOnlyLettersAndNumbers($params[2])){

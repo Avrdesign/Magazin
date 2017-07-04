@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="thumbnail">
-                        <img src="<?php echo $product->getIcon();?>" alt="...">
+                        <img src="<?php echo $product->getIcons();?>" alt="...">
                         <div class="row">
                             <div class="col-md-4">
                                 <a href=""><img class="img-responsive" src="http://lorempixel.com/400/240/technics/" alt=""></a>

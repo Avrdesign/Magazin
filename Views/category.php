@@ -1,3 +1,5 @@
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -5,7 +7,7 @@
                 <?php
                 /** @var Category $category */
                 foreach ($categories as $category){ ?>
-                    <a href="<?php echo Rout::base_url().'category/'.$category->getSlug();?>" class="list-group-item <?php echo (isset($currentCategory) and $currentCategory == $category->getSlug()) ? ' active' : ''; ?>">
+                    <a href="<?php echo Rout::base_url().'category/'.$category->getSlug();?>" class="list-group-item <?php echo (isset($currentCategory) and $currentCategory->getSlug() == $category->getSlug()) ? ' active' : ''; ?>">
                         <?php echo $category->getName();?>
                     </a>
                 <?php }?>
@@ -18,7 +20,7 @@
                 foreach ( $products as $product){ ?>
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
-                            <img src="<?php echo $product->getIcon();?>" alt="...">
+                            <img src="<?php echo $product->getIcons();?>" alt="...">
                             <div class="caption">
                                 <h3><a href="<?php echo $product->getURI();?>"><?php echo $product->getName();?></a></h3>
                                 <p>

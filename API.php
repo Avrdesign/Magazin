@@ -8,9 +8,8 @@
  */
 class API
 {
-
     public static function getCurrency(){
-        $needCurrency = [292, 145, 298]; // EUR, USD, RU
+        $needCurrency = [292, 145, 298]; // EUR, USD, RUR
         $jsonString = file_get_contents('http://www.nbrb.by/API/ExRates/Rates?Periodicity=0');
         $json = json_decode($jsonString, true);
         $currencies = array();
@@ -42,5 +41,4 @@ class API
                 $_SERVER['REMOTE_ADDR']:
                 'UNKNOWN';
     }
-
 }

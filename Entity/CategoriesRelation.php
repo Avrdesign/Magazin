@@ -20,7 +20,7 @@ class CategoriesRelation
     }
 
     public function getCategoryBySlug($slug){
-        $category = DBManager::getDB()->getFieldBySlug(self::TABLE_NAME, $slug);
+        $category = DBManager::getDB()->getFieldFromTableWhere(self::TABLE_NAME, 'slug',$slug);
         return $category ? new Category($category["id"],$category["name"], $category["slug"]) : null;
     }
 }
