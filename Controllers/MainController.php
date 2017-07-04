@@ -12,6 +12,11 @@ class MainController implements IController
 
     public function response()
     {
-        echo 'MainController';
+        $categories = (new CategoriesRelation())->getAllCategories();
+        //$promotionProducts = (new ProductRelation())->getAllPromotionProducts();
+
+        include_once 'Views/header.php';
+        include_once "Views/main.php";
+        include_once 'Views/footer.php';
     }
 }

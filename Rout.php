@@ -12,6 +12,8 @@ class Rout
     const INDEX = '';
     const BASKET = 'basket';
     const CONTACTS = 'contacts';
+    const CATEGORY = 'category';
+    const PRODUCT = 'product';
 
     private $controller;
 
@@ -33,22 +35,22 @@ class Rout
             case self::CONTACTS :
                 $this->controller = new ContactsController();
                 break;
-            default:
-                if (!Utils::regExpOnlyLettersAndNumbers($params[1])){
-                    $this->controller = new Error404Controller();
-                    break;
-                }
-
+            case self::CATEGORY :
                 if (!empty($params[2]) and !Utils::regExpOnlyLettersAndNumbers($params[2])){
                     $this->controller = new Error404Controller();
                     break;
                 }
-
-                if (empty($params[2])){
-                    $this->controller = new CategoriesController($params[1]);
-                }else{
-                    $this->controller = new ProductController($params[1],$params[2]);
+                $this->controller = new CategoriesController($params[2]);
+                break;
+            case self::PRODUCT :
+                if (!empty($params[2]) and !Utils::regExpOnlyLettersAndNumbers($params[2])){
+                    $this->controller = new Error404Controller();
+                    break;
                 }
+                $this->controller = new ProductController($params[2]);
+                break;
+            default:
+                $this->controller = new Error404Controller();
                 break;
         }
     }
@@ -60,6 +62,10 @@ class Rout
         }else{
             echo "Error server";
         }    
+    }
+
+    public static function base_url(){
+        return 'http://'.$_SERVER["SERVER_NAME"].'/';
     }
 
 }

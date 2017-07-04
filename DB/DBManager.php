@@ -11,7 +11,7 @@ class DBManager
     const DB_HOST = 'localhost';
     const DB_NAME = 'test';
     const DB_USER_NAME = 'root';
-    const DB_USER_PASSWORD = '';
+    const DB_USER_PASSWORD = 'root';
 
     private static $db = null;  // Единственный экземпляр класса, чтобы не создавать множество подключений
     private $connection;              // Идентификатор соединения
@@ -39,6 +39,23 @@ class DBManager
             return self::$db;
     }
 
+
+    /**
+     * @return array
+     */
+    public function getDataFromTableWhere($tableName,$key,$value){
+        $sql = "SELECT * FROM $tableName WHERE $key='$value'";
+        $result = $this->connection->query($sql);
+        $array = array();
+        while($row = $result->fetch_assoc()){
+            $array[] = $row;
+        }
+        return $array;
+    }
+
+    /**
+     * @return array
+     */
     public function getAllData($tableName){
         $sql = "SELECT * FROM $tableName";
         $result = $this->connection->query($sql);
@@ -49,9 +66,8 @@ class DBManager
         return $array;
     }
 
-    public function getFieldById($tableName,$id){
-        $id = (int)$id;
-        $sql = "SELECT * FROM $tableName WHERE id = $id LIMIT 1";
+    public function getFieldBySlug($tableName,$slug){
+        $sql = "SELECT * FROM $tableName WHERE slug = '$slug' LIMIT 1";
         $result = $this->connection->query($sql);
         return $result->fetch_assoc();
     }

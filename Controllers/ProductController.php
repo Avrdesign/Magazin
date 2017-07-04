@@ -9,19 +9,21 @@
 class ProductController implements IController
 {
 
-    private $productSlug;
-    private $categorySlug;
+    private $slug;
 
 
-    public function __construct($categorySlug,$productSlug)
+    public function __construct($slug)
     {
-        $this->categorySlug = $categorySlug;
-        $this->productSlug = $productSlug;
+        $this->slug = $slug;
     }
 
     public function response()
     {
-        echo "ProductController $this->categorySlug , $this->productSlug";
+        $categories = (new CategoriesRelation())->getAllCategories();
+        $product = (new ProductRelation())->getProductBySlug($this->slug);
+        include_once 'Views/header.php';
+        include_once "Views/product.php";
+        include_once 'Views/footer.php';
     }
 
 

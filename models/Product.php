@@ -14,8 +14,10 @@ class Product
     protected $icon;
     protected $price;
     protected $exists;
+    protected $slug;
 
-    public function __construct($id,$name,$description,$icon,$price,$exists)
+
+    public function __construct($id,$name,$description,$icon,$price,$exists, $slug)
     {
         $this->id = $id;
         $this->name = $name;
@@ -23,6 +25,8 @@ class Product
         $this->icon = $icon;
         $this->price = $price;
         $this->exists= $exists;
+        $this->slug = $slug;
+
     }
 
     /**
@@ -86,7 +90,11 @@ class Product
      */
     public function getIcon()
     {
-        return $this->icon;
+        return Rout::base_url().'src/images/'.$this->icon;
+    }
+
+    public function getURI(){
+        return Rout::base_url().Rout::PRODUCT.'/'.$this->slug;
     }
 
     /**
