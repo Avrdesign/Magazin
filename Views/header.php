@@ -20,5 +20,7 @@
 <body>
 
     <header>
-        Header
+        <a href="/">Главная</a>
+        <a href="/basket">Корзина</a>
+        <a href="/contacts">Контакты</a>
     </header>

@@ -21,6 +21,7 @@ require_once 'Controllers/CategoriesController.php';
 require_once 'Controllers/ContactsController.php';
 require_once 'Controllers/ProductController.php';
 require_once 'Controllers/BasketController.php';
+require_once 'Controllers/RestController.php';
 require_once 'Controllers/Error404Controller.php';
 require_once 'Rout.php';
 

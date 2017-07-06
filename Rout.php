@@ -14,6 +14,7 @@ class Rout
     const CONTACTS = 'contacts';
     const CATEGORY = 'category';
     const PRODUCT = 'product';
+    const REST_API = 'rest_api';
 
     private $controller;
 
@@ -34,6 +35,9 @@ class Rout
                 break;
             case self::CONTACTS :
                 $this->controller = new ContactsController();
+                break;
+            case self::REST_API :
+                $this->controller = new RestController();
                 break;
             case self::CATEGORY :
                 if (!empty($params[2]) and !Utils::regExpOnlyLettersAndNumbers($params[2])){

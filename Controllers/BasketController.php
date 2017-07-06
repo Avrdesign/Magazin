@@ -10,6 +10,11 @@ class BasketController implements IController
 {
     public function response()
     {
-        echo 'BasketController';
+        $categoryRelation = new CategoriesRelation();
+        $categories = $categoryRelation->getAllCategories();
+
+        include_once 'Views/header.php';
+        include_once 'Views/basket.php';
+        include_once 'Views/footer.php';
     }
 }

@@ -21,16 +21,16 @@ class CategoriesController implements IController
     public function response()
     {
         $categoryRelation = new CategoriesRelation();
-        $currentCategory = $categoryRelation->getCategoryBySlug($this->slug);
-        if (!isset($currentCategory)) {
-            print 'Error';
-            return;
-        }
-        $productRelation = new ProductRelation();
         $categories = $categoryRelation->getAllCategories();
-        $products = $productRelation->getAllProductsByCategorySlug($this->slug);
+        $currentCategory = $categoryRelation->getCategoryBySlug($this->slug);
         include_once 'Views/header.php';
-        include_once 'Views/category.php';
+        if (!isset($currentCategory)) {
+            include_once 'Views/error404.php';
+        }else {
+            $productRelation = new ProductRelation();
+            $products = $productRelation->getAllProductsByCategorySlug($this->slug);
+            include_once 'Views/category.php';
+        }
         include_once 'Views/footer.php';
     }
 

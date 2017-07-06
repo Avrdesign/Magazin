@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <h3>ContactsController</h3>
+            <h3>ErrorController</h3>
         </div>
     </div>
 </div>

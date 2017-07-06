@@ -1,5 +1,6 @@
 <footer>
-    Footer
+    <a href="/">Главная</a>
+    <a href="/contacts">Контакты</a>
 </footer>
 
         <!-- jQuery JavaScript -->

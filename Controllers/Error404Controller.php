@@ -11,7 +11,12 @@ class Error404Controller implements IController
 
     public function response()
     {
-        echo 'Error404Controller';
+        $categoryRelation = new CategoriesRelation();
+        $categories = $categoryRelation->getAllCategories();
+
+        include_once 'Views/header.php';
+        include_once 'Views/error404.php';
+        include_once 'Views/footer.php';
     }
 
 }
