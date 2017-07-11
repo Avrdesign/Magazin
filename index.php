@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 require_once 'Utils.php';
+require_once 'ImageManager.php';
 require_once 'API.php';
 require_once 'DB/DBManager.php';
 require_once 'Models/Category.php';

@@ -1,5 +1,5 @@
 body {
-    background: url('/src/images/BG.jpg') fixed no-repeat;
+    background: url('../src/images/BG.jpg') fixed no-repeat;
 }
 
 
