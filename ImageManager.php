@@ -33,6 +33,22 @@ class ImageManager
         return $arrayImages;
     }
 
+    public function uploadFourImages(){
+        if(!count($this->tmp_file_names)){
+            return null;
+        }
+        $arrayImages = array();
+        for($i=0; $i<4; $i++){
+            $imgName = $this->uploadImageAndResize($this->tmp_file_names[$i]);
+            if(isset($imgName)){
+                $arrayImages[] = $imgName;
+            }else{
+                $arrayImages[] = 'img.png';
+            }
+        }
+        return $arrayImages;
+    }
+
     private function uploadImageAndResize($tmpFileName, $imagePath = self::IMAGE_PATH, $maxWidth = self::MAX_WIDTH)
     {
         if (empty($tmpFileName)){

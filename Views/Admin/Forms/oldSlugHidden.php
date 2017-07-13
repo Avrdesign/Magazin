@@ -1,0 +1,1 @@
+<input type="hidden" name="oldSlug" value="<?php echo $oldSlug;?>">

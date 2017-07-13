@@ -89,7 +89,7 @@ class Product
      */
     public function getIcons()
     {
-        return Rout::base_url().'src/images/'.$this->icons;
+        return $this->icons;
     }
 
     public function getURI(){
@@ -118,6 +118,14 @@ class Product
     public function setExists($exists)
     {
         $this->exists = $exists;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
 }

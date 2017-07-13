@@ -9,6 +9,7 @@
 class Admin
 {
     const PRODUCTS = "products";
+    const PRODUCT = "product";
     const CATEGORIES = "categories";
     const INFO = "info";
     const PROMO = "promo";

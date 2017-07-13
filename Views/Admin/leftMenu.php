@@ -4,6 +4,7 @@
                ($page == Admin::PRODUCTS) ||
                ($page == Admin::PROMO) ||
                ($page == Admin::COMMENTS) ||
+               ($page == Admin::PRODUCT) ||
                ($page == Admin::INFO)  ? "" : "active" ;?>">Заказы</a>
 
     <a href="?page=categories" class="list-group-item <?php echo $page == Admin::CATEGORIES ? "active" : ""?>">Категории</a>

@@ -9,13 +9,13 @@
 
 class TechProduct extends Product
 {
-    private $categoryId;
+    private $categorySlug;
     private $rating;
 
-    public function __construct($id, $name, $description, $icon, $price,$categoryId)
+    public function __construct($id,$name,$description,$icons,$price,$exists, $slug,$categoryId)
     {
-        parent::__construct($id, $name, $description, $icon, $price);
-        $this->categoryId = $categoryId;
+        parent::__construct($id,$name,$description,$icons,$price,$exists, $slug);
+        $this->categorySlug = $categoryId;
     }
 
 
@@ -38,16 +38,16 @@ class TechProduct extends Product
     /**
      * @return mixed
      */
-    public function getCategoryId()
+    public function getCategorySlug()
     {
-        return $this->categoryId;
+        return $this->categorySlug;
     }
 
     /**
-     * @param mixed $categoryId
+     * @param mixed $categorySlug
      */
-    public function setCategoryId($categoryId)
+    public function setCategorySlug($categorySlug)
     {
-        $this->categoryId = $categoryId;
+        $this->categorySlug = $categorySlug;
     }
 }
