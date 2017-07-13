@@ -18,9 +18,10 @@
     <![endif]-->
 </head>
 <body>
-
-    <header>
+<header class="navbar-fixed-top">
+    <div class="container">
         <a href="/">Главная</a>
         <a href="/basket">Корзина</a>
         <a href="/contacts">Контакты</a>
-    </header>
+    </div>
+</header>

@@ -11,7 +11,7 @@ class DBManager
     const DB_HOST = 'localhost';
     const DB_NAME = 'test';
     const DB_USER_NAME = 'root';
-    const DB_USER_PASSWORD = '';
+    const DB_USER_PASSWORD = 'root';
 
     private static $db = null;  // Единственный экземпляр класса, чтобы не создавать множество подключений
     private $connection;              // Идентификатор соединения

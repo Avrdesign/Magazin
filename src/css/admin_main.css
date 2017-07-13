@@ -1,0 +1,27 @@
+.orders_table:before, .categories_table:before, .products_table:before, .promo_table:before, .comments_table:before {
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.orders_table:before {
+    content: "Заказы";
+}
+
+.categories_table:before{
+    content: "Категории";
+}
+
+.products_table:before{
+    content: "Продукты";
+}
+
+.promo_table:before{
+    content: "Акции";
+}
+
+.comments_table:before{
+    content: "Отзывы";
+}

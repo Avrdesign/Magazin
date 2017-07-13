@@ -7,6 +7,9 @@ require_once '../Entity/ProductRelation.php';
 require_once '../Entity/CategoriesRelation.php';
 require_once '../Models/Category.php';
 require_once '../Models/Product.php';
+Admin::adminValid();
+
+
 
 $imageManager = new ImageManager($_FILES);
 $imageNames = $imageManager->uploadAllImages();
@@ -26,7 +29,6 @@ if (empty($name)){
 }else if (empty($categorySlug)){
     $message = "Выберите категорию";
 }else{
-    // work with DB
     $slug = Utils::rusToLat($name);
     $images = implode(",", $imageNames);
 
@@ -44,6 +46,7 @@ if (empty($name)){
         $status = "danger";
     }else{
         $newProduct = new Product();
+        // work with DB
 
         $message = "Данные успешно сохранены!";
         $status = "success";

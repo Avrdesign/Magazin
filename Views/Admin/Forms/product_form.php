@@ -1,4 +1,4 @@
-<form action='/admin/imageLoader.php' method="post" enctype="multipart/form-data">
+<form action='/admin/addProduct.php' method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="exampleInputEmail1">Название</label>
         <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Название" required>
@@ -27,23 +27,50 @@
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Загрузить картинку №1</label>
-        <input accept="image/jpeg,image/png,image/gif" type="file" name="file1" class="form-control" aria-label="...">
+        <div class="row">
+            <div class="col-sm-9">
+                <input accept="image/jpeg,image/png,image/gif" type="file" name="file1" class="form-control" aria-label="...">
+            </div>
+            <div class="col-sm-3">
+                <img src="../../../src/images/img.png" class="img-responsive" alt="">
+            </div>
+        </div>
         <p class="help-block">Форматы jpg, png, gif</p>
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Загрузить картинку №2</label>
-        <input accept="image/jpeg,image/png,image/gif" type="file" name="file2" class="form-control" aria-label="...">
+        <div class="row">
+            <div class="col-sm-9">
+                <input accept="image/jpeg,image/png,image/gif" type="file" name="file2" class="form-control" aria-label="...">
+            </div>
+            <div class="col-sm-3">
+                <img src="../../../src/images/img.png" class="img-responsive" alt="">
+            </div>
+        </div>
         <p class="help-block">Форматы jpg, png, gif</p>
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Загрузить картинку №3</label>
-        <input accept="image/jpeg,image/png,image/gif" type="file" name="file3" class="form-control" aria-label="...">
-        <p class="help-block">Форматы jpg, png, gif</p>
+        <div class="row">
+            <div class="col-sm-9">
+                <input accept="image/jpeg,image/png,image/gif" type="file" name="file3" class="form-control" aria-label="...">
+            </div>
+            <div class="col-sm-3">
+                <img src="../../../src/images/img.png" class="img-responsive" alt="">
+            </div>
+        </div>        <p class="help-block">Форматы jpg, png, gif</p>
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Загрузить картинку №4</label>
-        <input accept="image/jpeg,image/png,image/gif" type="file" name="file4" class="form-control" aria-label="...">
-        <p class="help-block">Форматы jpg, png, gif</p>
+        <div class="row">
+            <div class="col-sm-9">
+                <input accept="image/jpeg,image/png,image/gif" type="file" name="file4" class="form-control" aria-label="...">
+            </div>
+            <div class="col-sm-3">
+                <img src="../../../src/images/img.png" class="img-responsive" alt="">
+            </div>
+        </div>        <p class="help-block">Форматы jpg, png, gif</p>
     </div>
     <button type="submit" class="btn btn-success">Сохранить</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
 </form>
