@@ -1,13 +1,5 @@
-.positionAbsoluteLeftTop{
-    position: absolute;
-    margin: 0 0 0 15px;
-    top:0;
-    left:0;
-}
-
 .positionAbsoluteLeftTopRemove{
     position: absolute;
-    margin: 0 0 0 55px;
     top:0;
-    left:0;
+    right:10px;
 }

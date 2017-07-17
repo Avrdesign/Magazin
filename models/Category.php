@@ -9,27 +9,17 @@
 
 class Category
 {
-    private $id;
     private $name;
     private $slug;
 
-    public function __construct($id,$name,$slug = null)
+    public function __construct($name,$slug = null)
     {
-        $this->id = $id;
         $this->name = $name;
         if ($slug){
             $this->slug = $slug;
         }else{
             $this->slug = Utils::rusToLat($name);
         }
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

@@ -2,11 +2,14 @@
 session_start();
 require_once '../ImageManager.php';
 require_once '../Utils.php';
+require_once 'Admin.php';
 require_once '../DB/DBManager.php';
 require_once '../Entity/ProductRelation.php';
 require_once '../Entity/CategoriesRelation.php';
 require_once '../Models/Category.php';
 require_once '../Models/Product.php';
+require_once '../Models/TechProduct.php';
+
 Admin::adminValid();
 
 $name = $_POST["name"];
@@ -26,7 +29,6 @@ if (empty($name)){
     $message = "Выберите категорию";
 }else{
     $slug = Utils::rusToLat($name);
-    $images = implode(",", $imageNames);
 
     $categoryRelation = new CategoriesRelation();
     $category = $categoryRelation->getCategoryBySlug($categorySlug);
@@ -43,10 +45,19 @@ if (empty($name)){
     }else{
         $imageManager = new ImageManager($_FILES);
         $imageNames = $imageManager->uploadAllImages();
-        // work with DB
+        $images = implode(",", $imageNames);
 
-        $message = "Данные успешно сохранены!";
-        $status = "success";
+        $product = new TechProduct($name,$description,$images,$price,$exists, $slug,$categorySlug);
+        if($productRelation->insertProduct($product)){
+            $message = "Продукт успешно добавлен!";
+            $status = "success";
+        }else{
+            $message = "Ошибка при сохранении данных!";
+            $status = "danger";
+        }
+
+
+
     }
 }
 
@@ -54,7 +65,7 @@ $_SESSION["message"] = array(
     "status"    =>  $status,
     "text"      =>  $message
 );
-header('Location: /admin');
+header('Location: /admin/?page=products');
 
 
 

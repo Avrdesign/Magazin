@@ -71,7 +71,42 @@ class DBManager
         return $result->fetch_assoc();
     }
 
+    public function update($tableName, $array, $where){
+        $sql = "UPDATE $tableName SET ";
+        foreach ($array as $key=>$value) {
+            $sql .= "`$key`=\"$value\",";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql .= " WHERE ";
+        foreach ($where as $key=>$value) {
+            $sql .= "`$key`=\"$value\",";
+        }
+        $sql = substr($sql, 0, -1);
+        return $this->connection->query($sql);
+    }
 
+    public function insert($tableName, $array){
+        $sql = "INSERT INTO $tableName (";
+        foreach ($array as $key=>$value) {
+            $sql .= "`$key`,";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql .= " ) VALUES (";
+        foreach ($array as $key=>$value) {
+            $sql .= "\"$value\",";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql .= " )";
+        return $this->connection->query($sql);
+    }
 
+    public function delete($tableName, $where){
+        $sql = "DELETE FROM $tableName WHERE ";
+        foreach ($where as $key=>$value) {
+            $sql .= "`$key`=\"$value\",";
+        }
+        $sql = substr($sql, 0, -1);
 
+        return $this->connection->query($sql);
+    }
 }

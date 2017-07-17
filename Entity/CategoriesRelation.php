@@ -14,13 +14,40 @@ class CategoriesRelation
         $array = DBManager::getDB()->getAllData(self::TABLE_NAME);
         $categories = array();
         foreach ($array as $category){
-            $categories[] = new Category($category["id"],$category["name"], $category["slug"]);
+            $categories[] = new Category($category["name"], $category["slug"]);
         }
         return $categories;
     }
 
     public function getCategoryBySlug($slug){
         $category = DBManager::getDB()->getFieldFromTableWhere(self::TABLE_NAME, 'slug',$slug);
-        return $category ? new Category($category["id"],$category["name"], $category["slug"]) : null;
+        return $category ? new Category($category["name"], $category["slug"]) : null;
     }
+
+    public function insertCategory(Category $category){
+        $array = array(
+            "name" => $category->getName(),
+            "slug"=>$category->getSlug()
+        );
+        return DBManager::getDB()->insert(self::TABLE_NAME, $array);
+    }
+
+    public function updateCategory(Category $category, $oldSlug){
+        $array = array(
+            "name" => $category->getName(),
+            "slug"=>$category->getSlug()
+        );
+        $where = array(
+            "slug"=>$oldSlug
+        );
+        return DBManager::getDB()->update(self::TABLE_NAME, $array, $where);
+    }
+
+    public function deleteCategory(Category $category){
+        $where = array(
+            "slug"=>$category->getSlug()
+        );
+        return DBManager::getDB()->delete(self::TABLE_NAME, $where);
+    }
+
 }

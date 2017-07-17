@@ -21,7 +21,7 @@ include_once '../Views/Admin/header.php';
         <div class="col-sm-3 hidden-xs">
             <?php
             $page = isset($_GET["page"]) ? $_GET["page"] : "";
-            if($page == Admin::PRODUCT){
+            if($page == Admin::PRODUCT or $page == Admin::CATEGORY){
                 if (isset($_GET["slug"])){
                     $slug = $_GET["slug"] ;
                 }else{
@@ -35,11 +35,20 @@ include_once '../Views/Admin/header.php';
                 switch ($page){
                     case Admin::PRODUCTS :
                         $productRelation = new ProductRelation();
+                        $categoriesRelation = new CategoriesRelation();
+                        $categories = $categoriesRelation->getAllCategories();
                         $techProducts = $productRelation->getAllTechProducts();
                         require_once '../Views/Admin/products.php';
                         break;
                     case Admin::CATEGORIES :
+                        $categoriesRelation = new CategoriesRelation();
+                        $categories = $categoriesRelation->getAllCategories();
                         require_once '../Views/Admin/categories.php';
+                        break;
+                    case Admin::CATEGORY :
+                        $categoriesRelation = new CategoriesRelation();
+                        $category = $categoriesRelation->getCategoryBySlug($slug);
+                        require_once '../Views/Admin/category.php';
                         break;
                     case Admin::INFO :
                         echo "info";

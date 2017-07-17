@@ -1,4 +1,6 @@
 <!-- Large modal -->
+<link rel="stylesheet" href="../../src/css/product.css">
+
 <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target=".bs-example-modal-md">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Добавить продукт
 </button>

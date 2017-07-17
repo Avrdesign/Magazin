@@ -8,6 +8,8 @@ require_once '../Entity/ProductRelation.php';
 require_once '../Entity/CategoriesRelation.php';
 require_once '../Models/Category.php';
 require_once '../Models/Product.php';
+require_once '../Models/TechProduct.php';
+
 Admin::adminValid();
 
 $name = $_POST["name"];
@@ -31,39 +33,67 @@ if (empty($name)){
 
     $productRelation = new ProductRelation();
     $product = $productRelation->getProductBySlug($oldSlug);
-
+    /**
+     * @var TechProduct $product
+     */
     if (isset($product)){
+
+        $newSlug = Utils::rusToLat($name);
         $imageManager = new ImageManager($_FILES);
         $imageNames = $imageManager->uploadFourImages();
-        $images = implode(",", $imageNames);
-        $arrayFSrc = implode(",", $fSrc);
-
-        echo "FilesImageSNames = $images <br>";
         $icons = $product->getIcons();
-        echo "ProductImageSNames = $icons <br>";
-        echo "HiddenImageSNames = $arrayFSrc <br>";
-        $newSlug = Utils::rusToLat($name);
+        $iconsArray = explode(',',$icons);
+        $iconsArray = imageFirstStep($iconsArray,$imageNames);
+        $iconsArray = imageSecondStep($iconsArray,$fSrc);
+        $iconsNewStr = implode(",", $iconsArray);
 
-//        $product->setName($name);
-//        $product->setDescription($description);
-//        $product->setExists($exists);
-//        $product->setPrice($price);
 
-        // work with DB
 
-        $message = "Данные успешно сохранены!";
-        $status = "success";
+        $product->setName($name);
+        $product->setSlug($newSlug);
+        $product->setDescription($description);
+        $product->setExists($exists);
+        $product->setPrice($price);
+        $product->setIcons($iconsNewStr);
+        $product->setCategorySlug($categorySlug);
+
+        if($productRelation->updateProduct($product, $oldSlug)){
+            $message = "Данные успешно сохранены!";
+            $status = "success";
+            $oldSlug = $newSlug;
+        }else{
+            $message = "Ошибка при сохранении данных!";
+            $status = "danger";
+        }
     }else{
         $message = "Не удалось сохранить данные!";
         $status = "danger";
     }
+}
+function imageSecondStep($arr_1,$arr_2){
+    for($i=0; $i<count($arr_2); $i++){
+        if($arr_2[$i] == "img.png"){
+            $arr_1[$i] = $arr_2[$i];
+        }
+    }
+    return $arr_1;
+}
+
+function imageFirstStep($arr_1,$arr_2){
+    for($i=0; $i<count($arr_2); $i++){
+        if($arr_2[$i] != "img.png"){
+            $arr_1[$i] = $arr_2[$i];
+        }
+    }
+    return $arr_1;
 }
 
 $_SESSION["message"] = array(
     "status"    =>  $status,
     "text"      =>  $message
 );
-//header('Location: /admin/?page=product&slug='.$oldSlug);
+
+header('Location: /admin/?page=product&slug='.$oldSlug);
 
 
 

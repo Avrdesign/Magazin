@@ -14,28 +14,56 @@ class ProductRelation
         $array = DBManager::getDB()->getArrayFromTableWhere(self::TABLE_NAME,'category_slug',$slug);
         $products = array();
         foreach ($array as $product){
-            $products[] = new Product($product["id"],$product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"]);
+            $products[] = new TechProduct($product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"],$product["category_slug"]);
         }
         return $products;
     }
 
     public function getProductBySlug($slug){
         $product = DBManager::getDB()->getFieldFromTableWhere(self::TABLE_NAME,'slug',$slug);
-        return $product ? new Product($product["id"],$product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"]) : null;
+        return $product ? new TechProduct($product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"],$product["category_slug"]) : null;
     }
 
     public function getTechProductBySlug($slug){
         $product = DBManager::getDB()->getFieldFromTableWhere(self::TABLE_NAME,'slug',$slug);
-        return $product ? new TechProduct($product["id"],$product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"],$product["category_slug"]) : null;
+        return $product ? new TechProduct($product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"],$product["category_slug"]) : null;
     }
 
     public function getAllTechProducts(){
         $array = DBManager::getDB()->getAllData(self::TABLE_NAME);
         $products = array();
         foreach ($array as $product){
-            $products[] = new TechProduct($product["id"],$product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"], $product["category_slug"]);
+            $products[] = new TechProduct($product["name"],$product["description"],$product["icons"],$product["price"],$product["is_exists"],$product["slug"], $product["category_slug"]);
         }
         return $products;
     }
 
+    public function updateProduct(TechProduct $product, $oldSlug){
+        $array = array(
+            "name" => $product->getName(),
+            "description"=>$product->getDescription(),
+            "icons"=>$product->getIcons(),
+            "price"=>$product->getPrice(),
+            "is_exists"=>$product->getExists(),
+            "slug"=>$product->getSlug(),
+            "category_slug"=>$product->getCategorySlug()
+        );
+        $where = array(
+            "slug"=>$oldSlug
+        );
+        return DBManager::getDB()->update(self::TABLE_NAME, $array, $where);
+    }
+
+    public function insertProduct(TechProduct $product){
+        $array = array(
+            "name" => $product->getName(),
+            "description"=>$product->getDescription(),
+            "icons"=>$product->getIcons(),
+            "price"=>$product->getPrice(),
+            "is_exists"=>$product->getExists(),
+            "slug"=>$product->getSlug(),
+            "category_slug"=>$product->getCategorySlug()
+        );
+        return DBManager::getDB()->insert(self::TABLE_NAME, $array);
+    }
 }

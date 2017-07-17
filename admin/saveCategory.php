@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alexandrzanko
- * Date: 7/13/17
- * Time: 3:25 PM
- */
 session_start();
 require_once '../Utils.php';
 require_once 'Admin.php';
@@ -15,6 +9,7 @@ Admin::adminValid();
 
 // category add to data base
 $name = $_POST["name"];
+$oldSlug = $_POST["oldSlug"];
 
 $message = "Ошика сервера!";
 $status = "danger";
@@ -26,17 +21,17 @@ if (empty($name)){
     $categoryRelation = new CategoriesRelation();
     $category = $categoryRelation->getCategoryBySlug($categorySlug);
     if (isset($category)){
-        $message = "Категории $slug существует";
-        $status = "danger";
-    }else{
-        $category = new Category($name);
-        if($categoryRelation->insertCategory($category)){
-            $message = "Категория успешно добавлена!";
+        $category->setName($name);
+        if($categoryRelation->updateCategory($category, $oldSlug)){
+            $message = "Категория успешно сохранена!";
             $status = "success";
         }else{
             $message = "Ошибка при сохранении данных!";
             $status = "danger";
         }
+    }else{
+        $message = "Категории $slug не существует";
+        $status = "danger";
     }
 }
 

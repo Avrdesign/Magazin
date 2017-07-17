@@ -11,6 +11,7 @@ class Admin
     const PRODUCTS = "products";
     const PRODUCT = "product";
     const CATEGORIES = "categories";
+    const CATEGORY = "category";
     const INFO = "info";
     const PROMO = "promo";
     const COMMENTS = "comments";

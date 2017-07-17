@@ -22,35 +22,25 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>id</th>
             <th>Имя</th>
             <th>Slug</th>
+            <th>Изменить</th>
         </tr>
         </thead>
         <tbody>
-
-
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-        </tr>
-
-
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-        </tr>
-
-
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-        </tr>
-
-
+        <?php
+        /* @var Category $category*/
+        foreach ($categories as $category)  {?>
+            <tr>
+                <td scope="row"><?php echo $category->getName(); ?></td>
+                <td><?php echo $category->getSlug(); ?></td>
+                <td>
+                    <a href="<?php echo "?page=category&slug=".$category->getSlug(); ?>" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        <?php }?>
         </tbody>
     </table>
 </div>

@@ -8,13 +8,17 @@
 
     $oldSlug = isset($techProduct) ? $techProduct->getSlug() : null;
 
-    $picturesStr = isset($techProduct) ? $techProduct->getIcons() : '';
-    $pictures = explode(',',$picturesStr);
+    $picturesStr = isset($techProduct) ? $techProduct->getIcons() : null;
+    if(isset($picturesStr)){
+        $pictures = explode(',',$picturesStr);
+    }else{
+        $pictures = null;
+    }
     $imagePath = '../../../src/images/products/';
-    $p1 = isset($pictures[0]) ? $pictures[0] : $imagePath.'img.png';
-    $p2 = isset($pictures[1]) ? $pictures[1] : $imagePath.'img.png';
-    $p3 = isset($pictures[2]) ? $pictures[2] : $imagePath.'img.png';
-    $p4 = isset($pictures[3]) ? $pictures[3] : $imagePath.'img.png';
+    $p1 = isset($pictures[0]) ? $pictures[0] : 'img.png';
+    $p2 = isset($pictures[1]) ? $pictures[1] : 'img.png';
+    $p3 = isset($pictures[2]) ? $pictures[2] : 'img.png';
+    $p4 = isset($pictures[3]) ? $pictures[3] : 'img.png';
 ?>
 <form action=<?php echo $action;?> method="post" enctype="multipart/form-data">
 
@@ -58,7 +62,7 @@
             <div class="col-sm-2">
                 <img src="<?php echo $imagePath.$p1;?>" class="img-responsive" alt="">
                 <input type="hidden" name="file1src" value="<?php echo $pictures[0];?>">
-                <button type="button" class="btn btn-danger positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
+                <button type="button" class="btn btn-danger btn-xs positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
@@ -74,7 +78,7 @@
             <div class="col-sm-2">
                 <img src=<?php echo $imagePath.$p2;?> class="img-responsive" alt="">
                 <input type="hidden" name="file2src" value="<?php echo $pictures[1];?>">
-                <button type="button" class="btn btn-danger positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
+                <button type="button" class="btn btn-danger btn-xs positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
@@ -90,7 +94,7 @@
             <div class="col-sm-2">
                 <img src=<?php echo $imagePath.$p3;?> class="img-responsive" alt="">
                 <input type="hidden" name="file3src" value="<?php echo $pictures[2];?>">
-                <button type="button" class="btn btn-danger positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
+                <button type="button" class="btn btn-danger btn-xs positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
@@ -105,7 +109,7 @@
             <div class="col-sm-2">
                 <img src=<?php echo $imagePath.$p4;?> class="img-responsive" alt="">
                 <input type="hidden" name="file4src" value="<?php echo $pictures[3];?>">
-                <button type="button" class="btn btn-danger positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
+                <button type="button" class="btn btn-danger btn-xs positionAbsoluteLeftTopRemove" onclick="bannerView.toRemove(this);">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>

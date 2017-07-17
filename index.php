@@ -14,6 +14,7 @@ require_once 'API.php';
 require_once 'DB/DBManager.php';
 require_once 'Models/Category.php';
 require_once 'Models/Product.php';
+require_once 'Models/TechProduct.php';
 require_once 'Entity/CategoriesRelation.php';
 require_once 'Entity/ProductRelation.php';
 require_once 'Controllers/IController.php';
