@@ -39,7 +39,7 @@
             <?php
                 /* @var Category $category*/
             foreach ($categories as $category) {?>
-                <option value="<?php echo $category->getSlug();?> "><?php echo $category->getName();?> </option>
+                <option value="<?php echo $category->getSlug();?>"<?php echo $category->getSlug() == $categorySlug ? ' selected' : '' ?>><?php echo $category->getName();?> </option>
             <?php }?>
         </select>
     </div>
@@ -49,8 +49,7 @@
     </div>
     <div class="checkbox">
         <label>
-            <input type="checkbox" name="exists" value=<?php echo $isExists;
-                                                             echo $isExists ? ' checked' : ''?>> В наличии
+            <input type="checkbox" name="exists" <?php echo $isExists ? 'checked=true' : '';?>> В наличии
         </label>
     </div>
     <div class="form-group">
@@ -116,7 +115,13 @@
         </div>        <p class="help-block">Форматы jpg, png, gif</p>
     </div>
     <button type="submit" class="btn btn-success">Сохранить</button>
-    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
 </form>
+
+<?php if(isset($techProduct)){ ?>
+    <form action='/admin/removeProduct.php' method="post" style="margin-top: -35px;">
+        <input type="hidden" name="slug" value="<?php echo $techProduct->getSlug();?>">
+        <button type="submit" class="btn btn-danger pull-right">Удалить</button>
+    </form>
+<?php }?>
 
 <script src="../Views/Admin/admin.js"></script>

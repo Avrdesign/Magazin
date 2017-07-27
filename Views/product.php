@@ -1,6 +1,6 @@
 <div class="container marginTop120PX">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="list-group">
                 <?php
                 /** @var Category $category */
@@ -12,7 +12,7 @@
                 <?php }?>
             </div>
         </div>
-        <div class="col-md-8 product">
+        <div class="col-md-9 product">
             <div class="row">
                 <div class="col-md-6">
                     <div class="thumbnail">
@@ -32,14 +32,15 @@
                 </div>
                 <div class="col-md-6">
                     <h3><?php echo $product->getName();?> </h3>
+                    <p>
+                        <?php echo $product->getDescription();?>
+                    </p>
+                    <button type="button" class="btn btn-success ">+
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    </button>
+                    <span class="price <?php echo !$product->getExists() ? 'empty' : '';?>"><?php echo $product->getExists() ? $product->getPrice() : 'Нет в наличии';?></span>
                 </div>
             </div>
-            <div class="row">
-                <p>
-                    <?php echo $product->getDescription();?>
-                </p>
-            </div>
-
         </div>
     </div>
 </div>

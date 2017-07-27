@@ -59,13 +59,11 @@
                     <div class="thumbnail shadowBox">
                         <img src="http://lorempixel.com/400/240/technics/" alt="...">
                         <div class="caption">
-                            <h3>Thumbnail label</h3>
+                            <a href=""><h4>Thumbnail label</h4></a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, at dignissimos excepturi fuga itaque necessitatibus optio quasi quis quos tenetur vero voluptatem! Accusamus ad cum error explicabo illo maxime nam.</p>
-                            <p>
-                                <button type="button" class="btn btn-success btn-lg">+
-                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                                </button>
-                            </p>
+                            <button type="button" class="btn btn-success btn-sm">+
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                            </button>
                         </div>
                     </div>
                 </div>

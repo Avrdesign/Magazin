@@ -2,6 +2,10 @@ body {
     background: url('../src/images/BG.jpg') fixed no-repeat;
 }
 
+a{
+    text-decoration: none !important;
+}
+
 
 .categoriesFixed{
     position: fixed;
@@ -38,4 +42,41 @@ section #carousel{
     margin-top: 100px;
 }
 
+.price{
+    float: right;
+    font-size: 22px;
+    color:red;
+    font-weight: bold;
+}
+
+.price:before{
+    content: "Цена: ";
+    font-size: 14px;
+    color:gray;
+    font-weight: normal;
+
+}
+
+.price:after{
+    content: " руб.";
+    font-size: 14px;
+    color:gray;
+    font-weight: normal;
+}
+
+.product{
+    padding-bottom: 10px;
+}
+.price.empty{
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.price.empty:after{
+    content: '';
+}
+
+.price.empty:before{
+    content: '';
+}
 

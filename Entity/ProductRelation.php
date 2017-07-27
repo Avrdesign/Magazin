@@ -66,4 +66,11 @@ class ProductRelation
         );
         return DBManager::getDB()->insert(self::TABLE_NAME, $array);
     }
+
+    public function deleteProduct(TechProduct $product){
+        $where = array(
+            "slug"=>$product->getSlug()
+        );
+        return DBManager::getDB()->delete(self::TABLE_NAME, $where);
+    }
 }
