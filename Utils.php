@@ -16,7 +16,7 @@ class Utils
     }
 
     public static function regExpOnlyLettersAndNumbers($str){
-        $pattern = '/^[\w-.]+$/';
+        $pattern = '/^[\w-.()]+$/';
         return preg_match($pattern, $str);
     }
 

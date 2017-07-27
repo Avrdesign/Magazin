@@ -6,4 +6,7 @@
         <strong><?php echo $_SESSION["message"]["status"] == "danger" ? 'Ошибка! ' : 'Успех! ' ;?></strong>
         <?php echo $_SESSION["message"]["text"];?>
     </div>
-<?php unset($_SESSION["message"]); }?>
+<?php if(empty($_SESSION["message"]["products"])){
+        unset($_SESSION["message"]);
+    }
+}?>

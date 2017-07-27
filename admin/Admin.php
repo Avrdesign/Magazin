@@ -14,6 +14,7 @@ class Admin
     const CATEGORY = "category";
     const INFO = "info";
     const PROMO = "promo";
+    const PARSE = "parse";
     const COMMENTS = "comments";
 
 

@@ -8,9 +8,15 @@
 class ParserHTML extends DOMDocument {
 
 
-    public function __construct($url)
+    public function __construct($url = null)
     {
-        $this->loadHTML(file_get_contents($url));
+        if($url){
+            $this->loadHTML(file_get_contents($url));
+        }
+    }
+
+    public function setContent($content){
+        $this->loadHTML($content);
     }
 
     public function getUrlIcons(){
@@ -42,7 +48,6 @@ class ParserHTML extends DOMDocument {
                     $items[] = $element;
                 }
             }
-
         }
         return $items;
     }

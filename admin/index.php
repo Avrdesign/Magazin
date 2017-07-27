@@ -56,6 +56,11 @@ include_once '../Views/Admin/header.php';
                     case Admin::PROMO :
                         require_once '../Views/Admin/promo.php';
                         break;
+                    case Admin::PARSE :
+                        $categoriesRelation = new CategoriesRelation();
+                        $categories = $categoriesRelation->getAllCategories();
+                        require_once '../Views/Admin/parse.php';
+                        break;
                     case Admin::COMMENTS :
                         require_once '../Views/Admin/comments.php';
                         break;
